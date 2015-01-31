@@ -23,10 +23,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"菜系" style:UIBarButtonItemStyleDone target:self action:@selector(showFoodTypes)];
-    barButtonItem.title = @"菜系";
-    self.navigationItem.leftBarButtonItem = barButtonItem;
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] init];
+    item.title = @"菜系";
+    
+    self.navigationItem.leftBarButtonItem = item;
+
 }
 
 // 有多少块
@@ -88,15 +95,10 @@
 #pragma mark - UISplitViewControllerDelegate
 - (void)splitViewController:(UISplitViewController *)svc willChangeToDisplayMode:(UISplitViewControllerDisplayMode)displayMode
 {
-//    UISplitViewControllerDisplayModeAutomatic,
-//    UISplitViewControllerDisplayModePrimaryHidden,
-//    UISplitViewControllerDisplayModeAllVisible,
-//    UISplitViewControllerDisplayModePrimaryOverlay,
+    UIBarButtonItem *item = [svc displayModeButtonItem];
+    item.title = @"hahah";
+    item.tintColor = [UIColor redColor];
 }
 
-- (void)showFoodTypes
-{
-    
-}
 
 @end
